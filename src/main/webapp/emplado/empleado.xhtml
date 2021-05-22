@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="./../resources/template/plantilla.xhtml">
+            <ui:define name="content">
+                <h:form id="buscaEmpleadoForm">
+                    <b:container fluid="true">
+                        <!--Panel para realizar la busqueda de empleados-->                        
+                        <b:panel title="Mantenimiento de empleados" 
+                                 look="primary" 
+                                 collapsible="false">
+                            <b:inputText placeholder="Correo del empleado" 
+                                         id="empleadoCorreobusqueda"
+                                         required="true" 
+                                         col-md="8"
+                                         value="#{empleadosController.correoEmpleado}"></b:inputText>
+                            <b:commandButton look="primary" 
+                                             value="Buscar empleado" 
+                                             onclick="ajax:empleadosController.editaEmpleado(empleadosController.correoEmpleado)"
+                                             action="#{puestoController.buscarPuesto(empleadosController.correoEmpleado)}"
+                                             update="editaEmpleadoForm"
+                                             />
+                        </b:panel>
+                    </b:container>
+                </h:form>    
+                <h:form id="editaEmpleadoForm">
+                    <b:container fluid="true">
+                        <!--Panel para la edicion de empleados-->
+                        <b:panel title="Editar Empleados" look="primary" collapsible="false">
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Id Empleado" 
+                                                   for="id"/>
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="ID"
+                                                 id="id"
+                                                 readonly="true"
+                                                 value="#{empleadosController.id_empleado}"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Nombre:" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Nombre"
+                                                 id="nombre"
+                                                 required="true"
+                                                 value="#{empleadosController.nombreEmpleado}"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Apellidos" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Apellidos"
+                                                 id="apellidos"
+                                                 required="true"
+                                                 value="#{empleadosController.apellidosEmpleado}"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Correo" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Correo"
+                                                 id="correo"
+                                                 required="true"
+                                                 value="#{empleadosController.correoEmpleado}"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Telefonos" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Telefono"
+                                                 id="telefono"
+                                                 required="true"
+                                                 value="#{empleadosController.telefonoEmpleado}"/>
+                                </b:column>
+                            </b:row>                            
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Fech. Nac" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:datepicker id="fechaNaci"
+                                                  required="true"
+                                                  requiredMessage="Se requiere la fecha de Nacimiento"
+                                                  value="#{empleadosController.fecha_nacimientoEmpleado}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="FechaNaci"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Puesto" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:selectOneMenu value="#{puestoController.nombrePuesto}" 
+                                                     select2="true">
+                                        <f:selectItems value="#{puestoController.puesto}"/>
+                                    </b:selectOneMenu>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="puesto"/>
+                                </b:column>
+                            </b:row>                          
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Fech. Ingr" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:datepicker id="fechaIngr"
+                                                  required="true"
+                                                  requiredMessage="Se requiere la fecha de Ingreso"
+                                                  value="#{empleadosController.fechaIngreso}"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Estado" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:switch on-text="Activo" 
+                                              off-text="Inactivo"
+                                              on-color="success"
+                                              off-color="danger"
+                                              value="#{empleadosController.estadoEmpleado}"/>
+                                </b:column>
+                            </b:row> 
+                            <b:row>
+                                <b:column medium-screen="3">
+                                    <b:commandButton value="Modificar"
+                                                     look="primary"
+                                                     style="width: 40%; padding: 5px;"
+                                                     action="#{empleadosController.actualizarEmpleado(puestoController.nombrePuesto)}"
+                                                     ></b:commandButton>
+                                </b:column>
+                                <b:column medium-screen="3" style="margin-left: -65px">
+                                    <b:commandButton value="Eliminar"
+                                                     look="primary"
+                                                     style="width: 40%; padding: 5px"
+                                                     action="#{empleadosController.eliminarEmpleado()}"> 
+                                    </b:commandButton>
+                                </b:column>
+                                <b:column medium-screen="3" style="margin-left: -65px">
+                                    <b:commandButton value="Insertar"
+                                                     look="primary"
+                                                     style="width: 40%; padding: 5px"
+                                                     action="#{empleadosController.insertarEmpleado(puestoController.nombrePuesto)}"> 
+                                    </b:commandButton>
+                                </b:column>
+                            </b:row>                            
+                        </b:panel>
+                </b:container>
+                </h:form>
+
+                <h:form>
+                    <b:container fluid="true">
+                        <!--Panel para visualizar el total de empleados-->                        
+                        <b:panel title="Empleados" look="primary" collapsible="false">
+                            <b:dataTable value="#{empleadosController.empleado}"
+                                         var="empleados"
+                                         excel="true"
+                                         csv="true"
+                                         pdf="true"
+                                         columnVisibility="true"
+                                         copy="true"
+                                         print="true">
+                                <b:dataTableColumn value="#{empleados.nombreEmpleado}"
+                                                   label="Nombre"
+                                                   width="5%"/>
+                                <b:dataTableColumn value="#{empleados.apellidosEmpleado}"
+                                                   label="Apellidos"
+                                                   width="9%"/>
+                                <b:dataTableColumn value="#{empleados.correoEmpleado}"
+                                                   label="correo"
+                                                   width="15%"/>
+                                <b:dataTableColumn value="#{empleados.telefonoEmpleado}"
+                                                   label="Telefono"
+                                                   width="6%"/>
+                                <b:dataTableColumn value="#{empleados.fecha_nacimientoEmpleado}"
+                                                   label="Fech.Nac"
+                                                   width="9%"/>
+                                <b:dataTableColumn value="#{empleados.id_puesto}"
+                                                   label="id puesto"
+                                                   width="5%"/>
+                                <b:dataTableColumn value="#{empleados.fechaIngreso}"
+                                                   label="Fech.Ing"
+                                                   width="9%"/>
+                                <b:dataTableColumn value="#{empleados.estadoEmpleado?'Activo':'Inactivo'}"
+                                                   label="Estado"
+                                                   width="5%"/>                                                                              
+                            </b:dataTable>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

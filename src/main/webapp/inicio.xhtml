@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+    <body>
+
+        <ui:composition template="./resources/template/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h1 style="font-family: Helvetica">Bienvenido al sistema ${usuarioController.nombreUsuario}</h1>
+                <p style="font-family: Helvetica">Recuerde no brindar sus contraseñas de trabajo a nadie por el bien suyo y de la organización.</p>
+                <h:graphicImage url="https://imgur.com/5Wea9I3.jpg"></h:graphicImage>
+            </ui:define>
+            
+        </ui:composition>
+
+    </body>
+</html>

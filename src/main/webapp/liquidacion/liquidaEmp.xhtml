@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+    <body>
+        <ui:composition template="./../resources/template/plantilla.xhtml">
+            <ui:define name="content">
+                <h:form id="liquidaEmpleadosForm">
+                    <b:container fluid="true">
+                        <b:panel title="Liquida Empleados" look="primary" collapsible="false">
+                            <b:row tooltip="">
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="id Empleado" 
+                                                   for="id"/>
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="ID"
+                                                 id="id"
+                                                 readonly="true"
+                                                 value="#{empleadoController.id_empleado}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="id"/>
+                                </b:column>
+                            </b:row>
+                            <b:row tooltip="">
+                           
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Nombre:" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Nombre"
+                                                 id="nombre"
+                                                 readonly="true"
+                                                 value="#{empleadoController.nombreEmpleado}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="nombre"/>
+                                </b:column>
+                            </b:row>
+                            <b:row tooltip="">
+                            
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Apellidos" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Apellidos"
+                                                 id="apellidos"
+                                                readonly="true"
+                                                 value="#{empleadoController.apellidosEmpleado}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="apellidos"/>
+                                </b:column>
+                            </b:row>
+                           <b:row tooltip="">
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Correo" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Correo"
+                                                 id="correo"
+                                                 readonly="true"
+                                                 value= "#{empleadoController.correoEmpleado}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="correo"/>
+                                </b:column>
+                            </b:row>
+                          <b:row tooltip="">
+                                <b:column medium-screen="2">
+                                    <h:outputText value="telefonos" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Telefono"
+                                                 id="telefono"
+                                              readonly="true"
+                                                 value="#{empleadoController.telefonoEmpleado}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="telefono"/>
+                                </b:column>
+                            </b:row>                            
+                         <b:row tooltip="">
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Fech. Nac" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText id="fechaNaci"
+                                                  readonly="true"
+                                                  requiredMessage="Se requiere la fecha de Nacimiento"
+                                                  value="#{empleadoController.fecha_nacimientoEmpleado}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="fechaNaci"/>
+                                </b:column>
+                            </b:row>
+                         <b:row tooltip="">
+                                <b:column medium-screen="2">
+                                    <h:outputText value="puesto" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Puesto"
+                                                 id="puesto"
+                                                 readonly="true"
+                                                 value="#{empleadoController.id_puesto}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="puesto"/>
+                                </b:column>
+                            </b:row>    
+                            
+                            <b:row tooltip="">
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Fech. Ingr" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText id="fechaIngr"
+                                                  readonly="true"
+                                                  requiredMessage="Se requiere la fecha de Ingreso"
+                                                  value="#{empleadoController.fechaIngreso}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="fechaIngr"/>
+                                </b:column>
+                            </b:row>
+                           
+                               <b:row tooltip="">
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Monto de Liquidacion" 
+                                                  />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    
+                                    <b:inputText id="monto"
+                                                  readonly="true"
+                                                  value="#{puestoController.getSalPuesto(empleadoController.id_puesto)}"/> 
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="fechaIngr"/>
+                                </b:column>
+                            </b:row>
+                            
+                            <b:row>
+                                <b:column medium-screen="2"/>
+                                <b:column medium-screen="4">
+                                    <b:commandButton value=""
+                                                     icon-awesome="fa-balance-scale"
+                                                     look="danger"
+                                                     style="width: 33%; padding: 5px"
+                                                     action="#{empleadoController.editaEmpleado(empleadoController.id_empleado)}"
+                                                     ></b:commandButton>
+                                </b:column>
+                            </b:row>                            
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

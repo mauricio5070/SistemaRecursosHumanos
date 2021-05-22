@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../resources/template/plantilla.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <b:container fluid="true">
+                        <b:panel title="Liquidacion de Empleados" look="primary" collapsible="false">
+                            <b:dataTable value="#{empleadosController.empleado}"
+                                         var="empleados">
+                                <b:dataTableColumn value="#{empleados.nombreEmpleado}"
+                                                   label="Nombre"
+                                                   width="5%"/>
+                                <b:dataTableColumn value="#{empleados.apellidosEmpleado}"
+                                                   label="Apellidos"
+                                                   width="9%"/>
+                                <b:dataTableColumn value="#{empleados.correoEmpleado}"
+                                                   label="correo"
+                                                   width="15%"/>
+                                <b:dataTableColumn value="#{empleados.id_puesto}"
+                                                   label="id puesto"
+                                                   width="5%"/>
+                                <b:dataTableColumn value="#{empleados.fechaIngreso}"
+                                                   label="Fech.Ing"
+                                                   width="9%"/>            
+                                <b:dataTableColumn style="text-align: center"
+                                                   label="Accion"
+                                                   width="10%">
+                                    <b:commandButton value="Liquidar"
+                                                     look="danger"
+                                                     iconAwesome="fa-balance-scale"
+                                                     action="#{empleadosController.liqEmpleado(empleados.id_empleado)}"/>                   
+                                </b:dataTableColumn>                                        
+                            </b:dataTable>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

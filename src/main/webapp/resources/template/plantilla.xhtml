@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="default.css" library="css"/>
+        <h:outputStylesheet name="cssLayout.css" library="css"/>
+        <title>Sistema de Recursos Humanos</title>
+        <style>
+            .sidenav {
+                height: 100%; /* Full-height: remove this if you want "auto" height */
+                width: 165px; /* Set the width of the sidebar */
+                position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+                z-index: 1; /* Stay on top */
+                top: 0; /* Stay at the top */
+                left: 0;
+                background-color: #ABA89A; /* Black */
+                overflow-x: hidden; /* Disable horizontal scroll */
+                padding-top: 5px;
+            }
+
+            /* The navigation menu links */
+            .sidenav a {
+                padding: 15px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 15px;
+                color: #818181;
+                display: block;
+                text-decoration: none;
+            }
+
+            /* When you mouse over the navigation links, change their color */
+            .sidenav a:hover {
+                color: #f1f1f1;
+                transition: 0.5s;
+                text-decoration: none;
+            }  
+        </style>  
+  <link href="https://admin.chatcompose.com/static/EN/global/export/css/main.0ec6acf6.css" rel="stylesheet">    
+  <script type="text/javascript" src="https://admin.chatcompose.com/static/EN/global/export/js/main.dec259c7.js?user=mauricio5979-ProyectoMauricio&amp;lang=ES" user="mauricio5979-ProyectoMauricio" lang="ES"></script>  
+  </link>
+    
+    </h:head>
+    <h:body>
+        <div id="top" class="top">
+            <ui:insert name="top">
+                <b:navBar brand="Sistema de Recursos Humanos" brand-href="#{request.contextPath}/faces/inicio.xhtml" fluid="true" 
+                          style="background-color: #545EEB; border: none">
+                    <b:navbarLinks pull="right">                
+                         <b:navLink value="Graficas" icon-awesome="fa-bar-chart"
+                                   href="#{request.contextPath}/faces/dashboard/grafico06.xhtml"/>                        
+                        <b:navLink value="Reporte de empleados" icon-awesome="fa-newspaper-o"
+                                   href="#{request.contextPath}/faces/emplado/reporte.xhtml"/>
+                        <b:navLink value="Reporte de puestos disponibles" icon-awesome="fa-newspaper-o"
+                                   href="#{request.contextPath}/faces/puestos/reporte.xhtml"/>
+                        <b:navLink value="Respaldo" icon-awesome="fa-newspaper-o"
+                                   href="#{request.contextPath}/faces/respaldo/respaldo.xhtml"/>
+                        <b:dropMenu value="Configuración" icon-awesome="fa-cog">
+                            <b:navLink value="Cerrar Sesión" icon-awesome="fa-sign-out" style="color: black"
+                                       href="${request.contextPath}/faces/index.xhtml"></b:navLink>
+                        </b:dropMenu>                        
+                    </b:navbarLinks>
+                </b:navBar>
+            </ui:insert>
+        </div>
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <div class="sidenav">
+                        <h:graphicImage url="https://imgur.com/kiZuIMw.png" style="width: 150px; height: 50px;"/>
+                        <a href="#{request.contextPath}/faces/emplado/empleado.xhtml">Empleados</a>
+                        <a href="#{request.contextPath}/faces/vacaciones/vacaciones.xhtml">Vacaciones</a>
+                        <a href="#{request.contextPath}/faces/liquidacion/liquidaciones.xhtml">Liquidaciones</a>
+                        <a href="#{request.contextPath}/faces/usuario/usuario.xhtml">Usuarios</a>
+                        <a href="#{request.contextPath}/faces/nomina/nomina.xhtml">Nomina</a>
+                        <a href="#{request.contextPath}/faces/pagos/pagos.xhtml">Constancias</a>                       
+                        <a href="#{request.contextPath}/faces/candidatos/candidato.xhtml">Candidatos</a>                           
+                    </div>
+                </ui:insert>
+            </div>
+            <div id="content" class="left_content">
+                <ui:insert name="content">
+                </ui:insert>
+            </div>
+        </div>
+    </h:body>
+</html>

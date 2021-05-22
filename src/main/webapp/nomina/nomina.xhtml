@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="./../resources/template/plantilla.xhtml">
+            <ui:define name="content">
+                
+                <h:form>
+                    <b:container fluid="true">
+                        <!--Panel para visualizar el total de empleados-->                        
+                        <b:panel title="Nominas" look="primary" collapsible="false">
+                            <b:dataTable value="#{nominaController.nomina}"
+                                         var="nomina"
+                                         excel="true"
+                                         csv="true"
+                                         pdf="true"
+                                         columnVisibility="true"
+                                         copy="true"
+                                         print="true">
+                                <b:dataTableColumn value="#{nomina.id_pago}"
+                                                   label="ID"
+                                                   width="5%"/>
+                                <b:dataTableColumn value="#{nomina.monto}"
+                                                   label="Monto"
+                                                   width="9%"/>
+                                <b:dataTableColumn value="#{nomina.fechaPago}"
+                                                   label="Fecha de Pago"
+                                                   width="15%"/>
+                                                                          
+                            </b:dataTable>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

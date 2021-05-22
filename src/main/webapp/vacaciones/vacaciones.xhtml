@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+        <ui:composition template="./../resources/template/plantilla.xhtml">
+            <ui:define name="content">
+                <h:form id="informacionClienteForm">
+                    <b:container fluid="true">
+                        <b:panel col-md="6" title="Busqueda de empleado" look="primary" collapsible="false">
+                            <b:inputText placeholder="Correo del empleado" 
+                                         id="empleadoCorreobusqueda"
+                                         required="true" 
+                                         col-md="8"
+                                         value="#{empleadosController.correoEmpleado}"></b:inputText>
+                            <b:commandButton look="primary" 
+                                             value="Buscar empleado"
+                                             onclick="ajax:empleadosController.editaEmpleadoVacaciones(empleadosController.correoEmpleado)"
+                                             action="#{vacacionesController.buscarVacaciones(empleadosController.id_empleado)}"
+                                             update="ingresoVacacionesForm"/>
+                        </b:panel>
+                    </b:container>
+                </h:form>                
+                <h:form id="ingresoVacacionesForm">
+                    <b:container fluid="true">
+                        <b:panel title="Ingreso de vacaciones" look="primary" collapsible="false" col-md="6">
+                            <b:row tooltip="">
+                                <b:column medium-screen="12" tooltip="Día de salida">
+                                    <b:datepicker id="FechaSalida"
+                                                  required="true"
+                                                  placeholder="Día de salida"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="12" tooltip="Día de entrada">
+                                    <b:datepicker id="FechaEntrada"
+                                                  required="true"
+                                                  placeholder="Día de entrada"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="12" tooltip="Cantidad de días disponibles">
+                                    <b:inputText value="#{vacacionesController.cantidadVacacionesDisponibles}"
+                                                 readonly="true"
+                                                 id="CantidadVacaciones"
+                                                 placeholder="Días disponibles"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="12" tooltip="Nombre del empleado">
+                                    <b:inputText value="#{empleadosController.nombreEmpleado}"
+                                                 readonly="true"
+                                                 id="Empleado"
+                                                 placeholder="Empleado seleccionado"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="12">
+                                    <b:panelGrid size="xs" columns="3">
+                                        <b:radiobutton value="#{vacacionesController.decisionSolicitud}" itemLabel="Permiso" itemValue="1"/>
+                                        <b:radiobutton value="#{vacacionesController.decisionSolicitud}" itemLabel="Vacaciones" itemValue="2"/>
+                                    </b:panelGrid>
+                                </b:column> 
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="12">
+                                    <b:commandButton value="Ingresar vacaciones" look="primary"/>
+                                </b:column>
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+                <h:form id="SolicitudesVacacionesHoy">
+                    <b:container fluid="true">
+                        <!--Panel para visualizar el total de empleados-->                        
+                        <b:panel title="Vacaciones" look="primary" collapsible="false" col-md="12">
+                            <b:dataTable value="#{empleadosController.empleado}"
+                                         var="vacaciones"
+                                         excel="true"
+                                         columnVisibility="true"
+                                         copy="true"
+                                         print="true">
+                                <b:dataTableColumn value="#{empleados.nombreEmpleado}"
+                                                   label="Nombre"
+                                                   width="5%"/>
+                                <b:dataTableColumn value="#{empleados.apellidosEmpleado}"
+                                                   label="Apellidos"
+                                                   width="9%"/>
+                                <b:dataTableColumn value="#{empleados.correoEmpleado}"
+                                                   label="Correo"
+                                                   width="15%"/>
+                                <b:dataTableColumn value="#{empleados.fecha_nacimientoEmpleado}"
+                                                   label="Fech.Salida"
+                                                   width="9%"/>
+                                <b:dataTableColumn value="#{empleados.fechaIngreso}"
+                                                   label="Fech.Ingreso"
+                                                   width="9%"/>                                
+                                <b:dataTableColumn value="#{empleados.id_puesto}"
+                                                   label="Días solicitados"
+                                                   width="5%"/>
+                                <b:dataTableColumn style="text-align: center"
+                                                   label="Aceptacion"
+                                                   width="10%">
+                                    <b:commandButton value=""
+                                                     iconAwesome="fa-trash-o"
+                                                     look="danger"
+                                                     action="#{estudianteController.editaEstudiante(estudiante.id, estudiante.idEstudiante)}"/>
+                                    <b:commandButton value=""
+                                                     iconAwesome="fa-check"
+                                                     look="success"
+                                                     action="#{estudianteController.editaEstudiante(estudiante.id, estudiante.idEstudiante)}"/>
+                                </b:dataTableColumn>
+                            </b:dataTable>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

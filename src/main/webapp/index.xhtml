@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login RRHH</title>
+        <style>
+            .centrado{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 500px;
+                height: 300px;
+                margin: auto;
+                margin-left: -250px;
+                margin-top: -150px;
+            }
+            
+            .password-form{
+                padding: 15px 25px 15px 25px;            
+            }
+            
+            .user-form{
+                padding: 15px 25px 15px 25px;
+            }
+            
+            .button-form{
+                padding: 15px 25px 15px 25px;            
+            }
+        </style>
+</h:head>
+    <h:body >
+        <h:graphicImage url="https://i.imgur.com/LpCDUKL.jpg" style="height: 100%; width: 100%; margin-top: -20px;">
+            <h:form id="LoginForm">
+                <b:panel title="Login RRHH" look="primary" collapsed="false" collapsible="false" style-class="centrado" 
+                         style="background-color: rgba(0,0,0,0.50)">
+                    <b:row tooltip="El usuario ya debe estar registrado" style-class="user-form">
+                        <b:column medium-screen="1"/>
+                        <b:column medium-screen="10"/>
+                        <b:inputText placeholder="Usuario" id="usuario" required="true" autocomplete="true"
+                                     value="#{usuarioController.userName}">
+                            <f:facet name="prepend">
+                                <b:icon name="user"/>
+                            </f:facet>             
+                        </b:inputText>
+                        <b:column medium-screen="1" style-class="message">
+                            <b:message for="usuario"/>
+                        </b:column>    
+                    </b:row>
+                    <b:row tooltip="Digite su contraseña" style-class="password-form">
+                        <b:column medium-screen="1"/>
+                        <b:column medium-screen="10"/>
+                        <b:inputSecret placeholder="Clave" id="clave" required="true" autocomplete="true"
+                                       value="#{usuarioController.pwUsuario}" accesskey="">
+                            <f:facet name="prepend">
+                                <b:iconAwesome name="key"/>
+                            </f:facet>             
+                        </b:inputSecret>
+                        <b:column medium-screen="15" style-class="message">
+                            <b:message for="clave"/>
+                        </b:column>
+                    </b:row>
+                    <b:row tooltip="Click para ingresar" style-class="button-form">
+                        <b:column medium-screen="1"/>
+                        <b:column medium-screen="10"/>   
+                        <b:commandButton value="Login" look="primary" style="width: 100%"
+                                         action="#{usuarioController.getUser()}"/>
+                    </b:row>
+                </b:panel>
+            </h:form>
+        </h:graphicImage>
+    </h:body>
+</html>
+
